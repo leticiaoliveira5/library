@@ -1,4 +1,4 @@
-name: RSpec
+name: CI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master, development ]
 
 jobs:
-  build:
+  rspec:
 
     runs-on: ubuntu-latest
 
@@ -53,7 +53,22 @@ jobs:
         env:
           RAILS_ENV: "test"
           DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
-          RUBYOPT: "-W:no-deprecated -W:no-experimental" # Suppress Rails 6 deprecation warnings for ruby 2.7
         run: |
           bundle exec rake db:setup db:migrate
           bundle exec rspec
+
+  # rubocop:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #     - name: Install Ruby and gems
+  #         uses: actions/setup-ruby@v1
+  #         with:
+  #           ruby-version: 3.1.x
+  #           bundler-cache: true
+  #     - name: RuboCop Linter Action
+  #       uses: andrewmcodes/rubocop-linter-action@v3.3.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
