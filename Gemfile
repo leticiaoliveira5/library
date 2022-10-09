@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.1'
 gem 'pg', '~> 1.3.5'
 # gem 'sidekiq', '~> 6.4.2'
 # gem 'redis-rails', '~> 5.0.2'
+# User authorization
+gem 'devise', '~> 4.8', '>= 4.8.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
