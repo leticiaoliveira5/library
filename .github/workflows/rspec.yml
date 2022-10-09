@@ -55,5 +55,5 @@ jobs:
           DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
           RUBYOPT: "-W:no-deprecated -W:no-experimental" # Suppress Rails 6 deprecation warnings for ruby 2.7
         run: |
-          bundle exec rake db:schema:load
+          bundle exec rake db:setup db:migrate
           bundle exec rspec
