@@ -1,6 +1,6 @@
 # Source: https://github.com/marketplace/actions/rubocop-linter-action
 
-name: "Rubocop"
+name: "Lint"
 on:
   pull_request:
     branches: [ "master", "development" ]
