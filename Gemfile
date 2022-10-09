@@ -35,6 +35,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'capybara'
   # Code coverage
   gem 'simplecov', '~> 0.13.0', require: false
 end
