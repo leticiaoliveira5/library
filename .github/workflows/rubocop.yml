@@ -1,3 +1,5 @@
+# Source: https://github.com/marketplace/actions/rubocop-linter-action
+
 name: "Rubocop"
 on:
   pull_request:
