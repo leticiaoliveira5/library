@@ -17,9 +17,9 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: <%= ENV['DATABASE_USER'] %>
-          POSTGRES_PASSWORD: <%= ENV['POSTGRES_PASSWORD'] %>
-          POSTGRES_DB: <%= ENV['DATABASE_NAME'] %>
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: library_test
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
@@ -52,7 +52,7 @@ jobs:
       - name: Test with RSpec
         env:
           RAILS_ENV: "test"
-          DATABASE_URL: "postgres://postgres@localhost:5432/library_development"
+          DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
           RUBYOPT: "-W:no-deprecated -W:no-experimental" # Suppress Rails 6 deprecation warnings for ruby 2.7
         run: |
           bundle exec rails db:setup
