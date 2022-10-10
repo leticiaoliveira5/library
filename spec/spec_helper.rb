@@ -19,7 +19,7 @@ SimpleCov.start do
   add_filter '/spec/'
 end
 require 'capybara/rspec'
-require "shoulda/matchers"
+require 'shoulda/matchers'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
