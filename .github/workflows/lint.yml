@@ -1,0 +1,23 @@
+# Source: https://github.com/marketplace/actions/run-rubocop-with-reviewdog
+
+name: "Lint"
+on:
+  pull_request:
+    branches: [ "master", "development" ]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  rubocop:
+    name: rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - uses: ruby/setup-ruby@v1
+      - name: rubocop
+        uses: reviewdog/action-rubocop@v2
+        with:
+          rubocop_version: gemfile
+          rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
+          reporter: github-pr-check
