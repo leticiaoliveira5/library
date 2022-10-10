@@ -7,6 +7,8 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.3.5'
+# User authorization
+gem 'devise', '~> 4.8', '>= 4.8.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
