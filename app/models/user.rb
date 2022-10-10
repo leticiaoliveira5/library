@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_presence_of :name
+  validates :name, presence: true
+  validates :email, uniqueness: true
 
   # adiciona tipo de usuário
   enum role: { admin: 0, member: 1 }, _suffix: true
