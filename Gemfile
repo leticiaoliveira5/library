@@ -7,8 +7,6 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.3.5'
-# gem 'sidekiq', '~> 6.4.2'
-# gem 'redis-rails', '~> 5.0.2'
 # User authorization
 gem 'devise', '~> 4.8', '>= 4.8.1'
 # Use Puma as the app server
@@ -30,7 +28,19 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # Testing tools
+  gem 'factory_bot_rails', '6.2.0'
+  gem 'faker', require: false
+  # Rspec
+  gem 'rspec-rails', '~> 5.1.0'
+  gem 'rubocop-rspec', require: false
+end
+
+group :test do
+  gem 'capybara'
+  # Code coverage
+  gem 'simplecov', '~> 0.13.0', require: false
 end
 
 group :development do
@@ -40,6 +50,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   # gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rubocop-rails', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
