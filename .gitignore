@@ -31,8 +31,7 @@
 .env
 
 # Ignore coverage page
-/coverage/assets
-/coverage/index.html
+/coverage/
 
 # Ignore rubocop import file
 .rubocop-https---raw-githubusercontent-com-leticiaoliveira5-code-style-master--rubocop-yml
