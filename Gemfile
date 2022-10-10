@@ -41,6 +41,7 @@ group :test do
   gem 'capybara'
   # Code coverage
   gem 'simplecov', '~> 0.13.0', require: false
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do
