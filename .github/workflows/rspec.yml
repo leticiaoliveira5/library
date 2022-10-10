@@ -43,3 +43,4 @@ jobs:
           bundle exec rake db:schema:load
           bundle exec rspec --require rails_helper
           
+
