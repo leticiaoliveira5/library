@@ -8,3 +8,6 @@
 
 # Cria usuário admin
 User.create!(email: 'admin@library.net', password: '654321', role: 0, name: 'Admin')
+
+# Cria usuário comum
+User.create!(email: 'maria@gmail.web', password: '654321', role: 1, name: 'Maria')
