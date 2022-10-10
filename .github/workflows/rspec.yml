@@ -53,9 +53,9 @@ jobs:
         env:
           RAILS_ENV: "test"
           DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
-        run: bundle exec rspec
+        # run: bundle exec rspec
         # adicionar o comando ""bundle exec rake db:schema:load"" quando o app tiver schema:
-        # run: |
-        # bundle exec rake db:schema:load
-        # bundle exec rspec
+        run: |
+        bundle exec rake db:schema:load
+        bundle exec rspec
           
