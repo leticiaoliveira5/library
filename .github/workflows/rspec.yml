@@ -50,21 +50,14 @@ jobs:
       # - name: Yarn install
       #   run: yarn --frozen-lockfile
 
-      - name: Setup Database
-        run: |
-          cp config/database.yml.github-actions config/database.yml
-          bundle exec rake db:create
-          bundle exec rake db:schema:load
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-
       - name: Test with RSpec
         env:
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
-        run: bundle exec rspec --require rails_helper
+        run: |
+          bundle exec rake db:create
+          bundle exec rake db:schema:load
+          bundle exec rspec --require rails_helper
           
