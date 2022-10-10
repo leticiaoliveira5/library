@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, :role, presence: true
-  validates :email, uniqueness: true
 
   # adiciona tipo de usuário
   enum role: { admin: 0, member: 1 }, _suffix: true
