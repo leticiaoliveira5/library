@@ -19,7 +19,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    redirect_to @book, notice: 'Livro criado com sucesso' if @book.save
+    redirect_to @book, notice: t('.success') if @book.save
   end
 
   def edit
@@ -35,6 +35,6 @@ class BooksController < ApplicationController
   def authorize_admin
     return if current_user.admin_role?
 
-    redirect_to books_path, alert: 'Somente admins podem acessar esta página!'
+    redirect_to books_path, alert: t('authorize_role_message')
   end
 end
