@@ -12,4 +12,14 @@ class User < ApplicationRecord
 
   # adiciona tipo de usuário
   enum role: { admin: 0, member: 1 }, _suffix: true
+
+  # Se o usuário for admin, pode buscar por todas as reservas, mas se for membro,
+  # poderá buscar apenas pelas suas reservas
+  def reservations
+    if admin_role?
+      Reservation.all
+    else
+      super
+    end
+  end
 end
