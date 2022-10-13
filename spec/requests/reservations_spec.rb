@@ -3,12 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Reservations', type: :request do
   let(:admin) { create(:user, :admin) }
   let(:member) { create(:user, :member) }
-  let!(:book) do
-    Book.create(title: 'Era Uma Vez', author: create(:author), category: create(:category))
-  end
-  let(:reservation) do
-    Reservation.create(book: book, user_id: member.id, devolution: 10.days.from_now)
-  end
+  let(:reservation) { create(:reservation, user: member) }
 
   before { sign_in(admin) }
 
@@ -51,6 +46,8 @@ RSpec.describe 'Reservations', type: :request do
 
   describe 'POST /create' do
     it 'creates a new reservation successfully' do
+      book = create(:book)
+
       post reservations_path, params: { reservation: { book_id: book.id,
                                                        devolution: 10.days.from_now,
                                                        user_id: member.id } }
