@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # o usuário possui reservas
-  has_many :reservations
+  has_many :reservations, dependent: :nullify
 
   validates :name, :role, presence: true
 
