@@ -23,7 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_011618) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "name", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
