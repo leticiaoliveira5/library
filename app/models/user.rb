@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
+  # Include default devise modules. Others available are: :registerable,
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  # Usuários não podem se registrar, um admin deve registrá-los.
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
   # o usuário possui reservas
