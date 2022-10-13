@@ -4,14 +4,15 @@ RSpec.describe 'Books', type: :request do
   let(:category) { create(:category) }
   let(:author) { create(:author) }
   let(:user) { create(:user, :admin) }
+
   before { sign_in(user) }
 
   describe 'GET /index' do
     it 'request list of all books' do
       Book.create(title: 'Era Uma Vez', author: create(:author), category: create(:category))
-      
+
       get books_path
-  
+
       expect(response).to be_successful
       # expect(response.body).to include('Era Uma Vez')
     end
