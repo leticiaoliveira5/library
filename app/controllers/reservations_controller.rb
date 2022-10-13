@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
   # Verifica se usuário é admin
-  before_action :authorize_admin, only: %i[index edit]
+  before_action :authorize_admin, only: %i[edit]
 
   def index
     @overdue = reservation_scope.overdue
