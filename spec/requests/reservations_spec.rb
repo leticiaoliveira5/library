@@ -52,7 +52,7 @@ RSpec.describe 'Reservations', type: :request do
       it 'redirect' do
         get edit_reservation_path(reservation)
 
-        expect(response).to redirect_to reservations_path
+        expect(response).to redirect_to root_path
         expect(flash[:alert]).to be_present
       end
     end

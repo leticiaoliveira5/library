@@ -19,10 +19,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :name, :role)
   end
-
-  def authorize_admin
-    return if current_user.admin_role?
-
-    redirect_to root_path, alert: t('authorize_role_message')
-  end
 end

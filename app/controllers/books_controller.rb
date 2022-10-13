@@ -31,10 +31,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :author_id, :category_id)
   end
-
-  def authorize_admin
-    return if current_user.admin_role?
-
-    redirect_to books_path, alert: t('authorize_role_message')
-  end
 end

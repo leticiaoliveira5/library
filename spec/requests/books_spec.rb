@@ -40,7 +40,7 @@ RSpec.describe 'Books', type: :request do
       it 'redirect' do
         get edit_book_path(book)
 
-        expect(response).to redirect_to books_path
+        expect(response).to redirect_to root_path
         expect(flash[:alert]).to be_present
       end
     end
