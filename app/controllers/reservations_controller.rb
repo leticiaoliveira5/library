@@ -20,10 +20,10 @@ class ReservationsController < ApplicationController
   def create
     @reservation = reservation_scope.new(reservation_params)
     @reservation.user = current_user if current_user.member_role?
-    if @reservation.save
-      @reservation.active!
-      redirect_to @reservation, notice: t('.success')
-    end
+    return unless @reservation.save
+    
+    @reservation.active!
+    redirect_to @reservation, notice: t('.success')
   end
 
   def edit
