@@ -5,5 +5,7 @@ class Book < ApplicationRecord
   belongs_to :category
   has_many :reservations, dependent: :nullify
 
+  has_one_attached :cover
+
   validates :title, presence: true
 end
