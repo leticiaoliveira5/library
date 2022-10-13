@@ -6,6 +6,7 @@ class Reservation < ApplicationRecord
   # A data de devolução não deve ser maior que duas semanas
   # a partir da data de criação da reserva
   validate :not_longer_than_two_weeks, unless: -> { devolution.blank? }, on: :create
+  validate :user_is_member
 
   # Reservas com devolução atrasada
   scope :overdue, -> { where(status: 'active', devolution: ...DateTime.now) }
@@ -19,5 +20,11 @@ class Reservation < ApplicationRecord
     return unless devolution > DateTime.now + 2.weeks
 
     errors.add(:devolution, :longer_than_two_weeks)
+  end
+
+  def user_is_member
+    return if user.member_role?
+
+    errors.add(:user, :not_member)
   end
 end

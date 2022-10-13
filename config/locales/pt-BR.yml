@@ -23,7 +23,8 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      longer_than_two_weeks: 'deve ser no máximo duas semanas a partir do momento da reserva'
+      not_member: é admin
+      longer_than_two_weeks: deve ser no máximo duas semanas a partir do momento da reserva
       accepted: deve ser aceito
       blank: não pode ficar em branco
       confirmation: não é igual a %{attribute}
