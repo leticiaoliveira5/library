@@ -7,10 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-  end
-
-  def edit
-    @user = User.find(params[:id])
+    redirect_to @user, notice: t('.success') if @user.save
   end
 
   def show
