@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     devise_for :user
     resources :books, except: :destroy
     resources :reservations, except: :destroy
-    resources :users, except: %i[destroy index]
+    resources :users, only: %i[new create show]
   end
 end
