@@ -8,10 +8,24 @@ RSpec.describe 'Reservations', type: :request do
   before { sign_in(admin) }
 
   describe 'GET /index' do
-    it 'request list of all reservations' do
-      get reservations_path
+    context 'user is admin' do
+      it 'request list of all reservations' do
+        get reservations_path
 
-      expect(response).to be_successful
+        expect(response).to be_successful
+        # adicionar response.body com as reservas quando a view for implementada
+      end
+    end
+
+    context 'user is member' do
+      before { sign_in(member) }
+
+      it 'request list of member reservations' do
+        get reservations_path
+
+        expect(response).to be_successful
+        # adicionar response.body com as reservas quando a view for implementada
+      end
     end
   end
 
