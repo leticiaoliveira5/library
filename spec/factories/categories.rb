@@ -2,6 +2,6 @@ require 'faker'
 
 FactoryBot.define do
   factory :category do
-    name { Faker::Book.genre }
+    name { Faker::Book.unique.genre }
   end
 end
