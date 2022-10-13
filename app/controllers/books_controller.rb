@@ -17,6 +17,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    redirect_to @book, notice: 'Livro criado com sucesso' if @book.save
   end
 
   def edit
