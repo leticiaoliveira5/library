@@ -75,3 +75,6 @@ pt-BR:
   reservations:
     create:
       success: Reserva criada com sucesso!
+  users:
+    create:
+      success: Usuário criado com sucesso!
