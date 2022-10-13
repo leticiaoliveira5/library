@@ -26,12 +26,14 @@ RSpec.describe 'Books', type: :request do
   end
 
   describe 'POST /create' do
-    it 'creates a new book' do
-      book_params = { title: 'As Crônicas de Nárnia', author_id: author.id, category: category.id }
+    it 'creates a new book successfully' do
+      post books_path, params: { book: { title: 'As Crônicas de Nárnia',
+                                         author_id: author.id,
+                                         category_id: category.id } }
 
-      post books_path, params: book_params
-
-      expect(response).to have_http_status(:created)
+      expect(response).to redirect_to(Book.last)
+      expect(flash[:notice]).to be_present
+      # expect(response.body).to include 'Livro criado com sucesso'
     end
   end
 
