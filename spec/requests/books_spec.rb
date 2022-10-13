@@ -27,12 +27,25 @@ RSpec.describe 'Books', type: :request do
   end
 
   describe 'GET /edit' do
-    it 'show book form' do
-      book = Book.create(title: 'Era Uma Vez', author: create(:author), category: create(:category))
+    let(:book) { Book.create(title: 'Era Uma Vez', author: create(:author), category: create(:category)) }
 
-      get edit_book_path(book)
+    context 'user is admin' do
+      it 'show book form' do
+        get edit_book_path(book)
 
-      expect(response).to be_successful
+        expect(response).to be_successful
+      end
+    end
+
+    context 'user is member' do
+      let(:user) { create(:user, :member) }
+
+      it 'redirect' do
+        get edit_book_path(book)
+
+        expect(response).to redirect_to books_path
+        expect(flash[:alert]).to be_present
+      end
     end
   end
 

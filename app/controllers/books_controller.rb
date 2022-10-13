@@ -35,6 +35,6 @@ class BooksController < ApplicationController
   def authorize_admin
     return if current_user.admin_role?
 
-    redirect_to :index, alert: 'Somente admins podem acessar esta página!'
+    redirect_to books_path, alert: 'Somente admins podem acessar esta página!'
   end
 end
