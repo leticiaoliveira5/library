@@ -65,3 +65,6 @@ pt-BR:
   books:
     create:
       success: Livro criado com sucesso!
+  reservations:
+    create:
+      success: Reserva criada com sucesso!

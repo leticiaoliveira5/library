@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     root 'books#index'
     devise_for :user
     resources :books
+    resources :reservations
   end
 end
