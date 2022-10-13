@@ -2,14 +2,28 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :request do
   let(:admin) { create(:user, :admin) }
+  let(:member) { create(:user, :member) }
 
   before { sign_in(admin) }
 
   describe 'GET /new' do
-    it 'show user form' do
-      get new_user_path
+    context 'admin is signed in' do
+      it 'show user form' do
+        get new_user_path
 
-      expect(response).to be_successful
+        expect(response).to be_successful
+      end
+    end
+
+    context 'member is signed in' do
+      before { sign_in(member) }
+
+      it 'redirects' do
+        get new_user_path
+
+        expect(response).to redirect_to root_path
+        expect(flash[:alert]).to be_present
+      end
     end
   end
 
