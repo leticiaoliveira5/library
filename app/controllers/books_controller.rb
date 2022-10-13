@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  # Verifica se usuário é admin
+  before_action :authorize_admin, only: %i[new create edit]
 
   def index
     @books = Book.all
@@ -28,5 +30,11 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author_id, :category_id)
+  end
+
+  def authorize_admin
+    return if current_user.admin_role?
+
+    redirect_to :index, alert: 'Somente admins podem acessar esta página!'
   end
 end
