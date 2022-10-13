@@ -5,6 +5,11 @@ pt-BR:
         title: Título
         author: Autor
         category: Categoria
+      reservation:
+        book: Livro
+        devolution: Data da devolução
+        user: Usuário
+        created_at: Data da reserva
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
