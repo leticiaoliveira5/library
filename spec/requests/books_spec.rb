@@ -26,6 +26,16 @@ RSpec.describe 'Books', type: :request do
     end
   end
 
+  describe 'GET /edit' do
+    it 'show book form' do
+      book = Book.create(title: 'Era Uma Vez', author: create(:author), category: create(:category))
+
+      get edit_book_path(book)
+
+      expect(response).to be_successful
+    end
+  end
+
   describe 'POST /create' do
     it 'creates a new book successfully' do
       post books_path, params: { book: { title: 'As Crônicas de Nárnia',
