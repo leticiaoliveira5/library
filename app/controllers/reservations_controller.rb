@@ -4,21 +4,21 @@ class ReservationsController < ApplicationController
   before_action :authorize_admin, only: %i[index edit]
 
   def index
-    @overdue = current_user.reservations.overdue
-    @actives = current_user.reservations.active
-    @finished = current_user.reservations.finished
+    @overdue = reservation_scope.overdue
+    @actives = reservation_scope.active
+    @finished = reservation_scope.finished
   end
 
   def show
-    @reservation = current_user.reservations.find(params[:id])
+    @reservation = reservation_scope.find(params[:id])
   end
 
   def new
-    @reservation = current_user.reservations.new
+    @reservation = reservation_scope.new
   end
 
   def create
-    @reservation = current_user.reservations.new(reservation_params)
+    @reservation = reservation_scope.new(reservation_params)
     @reservation.user = current_user if current_user.member_role?
     if @reservation.save
       @reservation.active!
@@ -27,7 +27,7 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation = current_user.reservations.find(params[:id])
+    @reservation = reservation_scope.find(params[:id])
   end
 
   private
@@ -40,5 +40,15 @@ class ReservationsController < ApplicationController
     return if current_user.admin_role?
 
     redirect_to reservations_path, alert: t('authorize_role_message')
+  end
+
+  # Se o usuário for admin, pode buscar por todas as reservas, mas se for membro,
+  # poderá buscar apenas pelas suas reservas
+  def reservation_scope
+    if current_user.admin_role?
+      Reservation.all
+    else
+      current_user.reservations
+    end
   end
 end
