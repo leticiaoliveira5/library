@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     root 'books#index'
     devise_for :user
-    resources :books
-    resources :reservations
+    resources :books, except: :destroy
+    resources :reservations, except: :destroy
+    resources :users, only: %i[new create show]
   end
 end

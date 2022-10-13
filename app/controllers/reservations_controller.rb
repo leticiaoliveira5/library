@@ -36,12 +36,6 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:book_id, :user_id, :devolution)
   end
 
-  def authorize_admin
-    return if current_user.admin_role?
-
-    redirect_to reservations_path, alert: t('authorize_role_message')
-  end
-
   # Se o usuário for admin, pode buscar por todas as reservas, mas se for membro,
   # poderá buscar apenas pelas suas reservas
   def reservation_scope
