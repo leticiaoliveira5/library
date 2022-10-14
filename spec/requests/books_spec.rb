@@ -3,17 +3,18 @@ require 'rails_helper'
 RSpec.describe 'Books', type: :request do
   let(:category) { create(:category) }
   let(:author) { create(:author) }
-  let(:user) { create(:user, :admin) }
+  let(:admin) { create(:user, :admin) }
+  let(:member) { create(:user, :member) }
   let!(:book) { Book.create(title: 'Era Uma Vez', author: author, category: category) }
 
-  before { sign_in(user) }
+  before { sign_in(admin) }
 
   describe 'GET /index' do
     it 'request list of all books' do
       get books_path
 
       expect(response).to be_successful
-      # expect(response.body).to include('Era Uma Vez')
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -35,7 +36,7 @@ RSpec.describe 'Books', type: :request do
     end
 
     context 'user is member' do
-      let(:user) { create(:user, :member) }
+      before { sign_in(member) }
 
       it 'redirect' do
         get edit_book_path(book)
@@ -54,7 +55,6 @@ RSpec.describe 'Books', type: :request do
 
       expect(response).to redirect_to(Book.last)
       expect(flash[:notice]).to be_present
-      # expect(response.body).to include 'Livro criado com sucesso'
     end
   end
 
@@ -63,7 +63,7 @@ RSpec.describe 'Books', type: :request do
       get book_path(book)
 
       expect(response).to be_successful
-      # expect(response.body).to include(book.title)
+      expect(response.body).to include(book.title)
     end
   end
 end
