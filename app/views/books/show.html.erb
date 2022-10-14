@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-5">
+    <%= image_tag(@book.cover, width: '120') %>
+  </div>
+  <div class="col-md-5">
+    <p>Título: <%= @book.title %></p>
+    <p>Autor: <%= @book.author.name %></p>
+    <p>Categoria: <%= @book.category.name %></p>
+  </div>
+  <%= edit_book_button %>
+  <%= reserve_book_button %>
+  <% if current_user.admin_role? %>
+    <%= button_to 'Editar', edit_book_path, class: 'btn btn-primary' %>
+  <% elsif @book.reservations.active.empty? %>
+    <%= button_to 'Reservar', new_reservation_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<%= simple_form_for @book do |f| %>
+  <%= f.input :title %>
+  <%= f.association :author, collection: Author.order(:name) %>
+  <%= f.association :category, collection: Category.order(:name) %>
+  <%= f.input :category %>
+  <%= f.input :cover %>
+  <%= f.button :submit %>
+<% end %>
