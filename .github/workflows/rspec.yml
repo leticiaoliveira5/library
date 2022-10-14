@@ -41,6 +41,7 @@ jobs:
           DATABASE_URL: "postgres://postgres@localhost:5432/library_test"
         run: |
           bundle exec rake db:schema:load
+          bundle exec rake assets:precompile
           bundle exec rspec --require rails_helper
           
 
