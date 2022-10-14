@@ -4,9 +4,7 @@ class ReservationsController < ApplicationController
   before_action :authorize_admin, only: %i[edit]
 
   def index
-    @overdue = reservation_scope.overdue
-    @actives = reservation_scope.active
-    @finished = reservation_scope.finished
+    @reservations = reservation_scope.page(params[:page]).per(12)
   end
 
   def show
@@ -40,7 +38,7 @@ class ReservationsController < ApplicationController
   # poderá buscar apenas pelas suas reservas
   def reservation_scope
     if current_user.admin_role?
-      Reservation.all
+      Reservation
     else
       current_user.reservations
     end
