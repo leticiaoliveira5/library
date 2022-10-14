@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Simple Form
+gem 'simple_form', '5.1.0'
+
 # Instalação Bootstrap sem Node
 gem 'bootstrap'
 gem 'importmap-rails', '~> 1.1'
