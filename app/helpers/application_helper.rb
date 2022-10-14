@@ -5,7 +5,10 @@ module ApplicationHelper
   end
 
   def book_admin_links(book)
-    link_to 'Editar', edit_book_path(book), class: 'btn btn-primary'
+    if book.active_reservations.blank?
+      link_to 'Criar nova reserva', new_reservation_path, class: 'btn btn-primary'
+    end
+    .concat(link_to 'Editar', edit_book_path(book), class: 'btn btn-primary', style: 'margin-left: 5px;')
   end
 
   def book_member_links(book)
