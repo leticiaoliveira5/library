@@ -8,6 +8,6 @@ WORKDIR /library
 COPY Gemfile /library/Gemfile
 COPY Gemfile.lock /library/Gemfile.lock
 RUN gem install rails bundler && bundle install
-RUN yarn install
+RUN yarn install && yarn build:css 
 COPY . /library
 ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
