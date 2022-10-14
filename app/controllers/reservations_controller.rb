@@ -4,9 +4,7 @@ class ReservationsController < ApplicationController
   before_action :authorize_admin, only: %i[edit]
 
   def index
-    @overdue = reservation_scope.overdue
-    @actives = reservation_scope.active
-    @finished = reservation_scope.finished
+    @reservations = reservation_scope.page(params[:page]).per(12)
   end
 
   def show
@@ -15,6 +13,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = reservation_scope.new
+    @book = Book.find(params[:book_id])
   end
 
   def create
@@ -28,6 +27,13 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = reservation_scope.find(params[:id])
+    @book = @reservation.book
+  end
+
+  def update
+    @reservation = reservation_scope.find(params[:id])
+    @reservation.update(reservation_params_update)
+    redirect_to @reservation, notice: t('.success') if @reservation.save
   end
 
   private
@@ -36,11 +42,15 @@ class ReservationsController < ApplicationController
     params.require(:reservation).permit(:book_id, :user_id, :devolution)
   end
 
+  def reservation_params_update
+    params.require(:reservation).permit(:devolution, :status)
+  end
+
   # Se o usuário for admin, pode buscar por todas as reservas, mas se for membro,
   # poderá buscar apenas pelas suas reservas
   def reservation_scope
     if current_user.admin_role?
-      Reservation.all
+      Reservation
     else
       current_user.reservations
     end

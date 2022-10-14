@@ -1,0 +1,18 @@
+<% @books.each_slice(4) do |books| %>
+  <div class="row">
+    <% books.each do |book| %>
+      <div class="col-md card" style="margin: 10px;">
+        <%= link_to book_cover(book), book %>
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text">
+            Autor: <%= book.author.name %> <br>
+            Categoria: <%= book.category.name %> <br>
+            Status: <%= book.reserved? ? 'Reservado' : 'Disponível' %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @books %>

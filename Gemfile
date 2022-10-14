@@ -12,13 +12,27 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
+# gem 'sass-rails', '>= 6'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Simple Form
+gem 'simple_form', '5.1.0'
+
+# Instalação Bootstrap sem Node
+gem 'bootstrap'
+gem 'importmap-rails', '~> 1.1'
+gem 'sassc-rails', '~> 2.1'
+gem 'sprockets', '~> 4.1'
+
+# Paginação
+gem 'kaminari', '~> 1.2'
+# Busca
+gem 'ransack', '~> 3.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

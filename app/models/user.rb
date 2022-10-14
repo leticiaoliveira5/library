@@ -8,6 +8,8 @@ class User < ApplicationRecord
   # o usuário possui reservas
   has_many :reservations, dependent: :nullify
 
+  scope :member, -> { where(role: :member) }
+
   validates :name, :role, presence: true
 
   # adiciona tipo de usuário
