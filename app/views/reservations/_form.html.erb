@@ -1,0 +1,10 @@
+<%= simple_form_for @reservation do |f| %>
+  <%= f.association :book, selected: @book.id,
+                           collection: [@book],
+                           input_html: { value: params[:book_id] } %>
+  <%= f.association :user, selected: current_user, collection: [current_user] if current_user.member_role? %>
+  <%= f.association :user, collection: User.member if current_user.admin_role? %>
+  <%= f.input :status, collection: Reservation.statuses.keys if current_user.admin_role? && !@reservation.new_record? %>
+  <%= f.input :devolution, as: :date, html5: true %>
+  <%= f.button :submit %>
+<% end %>

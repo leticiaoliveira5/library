@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <%= link_to book_cover(@reservation.book), @reservation.book %>
+    </div>
+    <div class="col-md-8">
+      <p>Usuário: <%= link_to @reservation.user.name, user_path(@reservation.user) %></p>
+      <p>Devolução: <%= @reservation.devolution %></p>
+      <p>Status: <%= @reservation.status %></p>
+
+      <%= link_to 'Editar', edit_reservation_path(@reservation), class: 'btn btn-primary' if current_user.admin_role? %>
+    </div>
+  </div>
+</div>

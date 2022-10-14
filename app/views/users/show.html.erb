@@ -1,0 +1,10 @@
+<h5><%= @user.name %> (<%= @user.role %>)</h5>
+<p>E-mail: <%= @user.email %></p>
+<p>Cadastrado em: <%= @user.created_at %></p>
+<% if @user.member_role? %>
+  <h4>Reservas</h4>
+  <%# filtrar  %>
+  <% @user.reservations.each do |r| %>
+    <p><%= link_to "Id: #{r.id}, Devolução: #{r.devolution.strftime('%d/%m/%Y')}, Status: #{r.status}", reservation_path(r) %></p>
+  <% end %>
+<% end %>
