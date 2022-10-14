@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Books', type: :request do
   let(:category) { create(:category) }
   let(:author) { create(:author) }
-  let(:user) { create(:user, :admin) }
+  let(:admin) { create(:user, :admin) }
+  let(:member) { create(:user, :member) }
   let!(:book) { Book.create(title: 'Era Uma Vez', author: author, category: category) }
 
   before { sign_in(user) }
@@ -35,7 +36,7 @@ RSpec.describe 'Books', type: :request do
     end
 
     context 'user is member' do
-      let(:user) { create(:user, :member) }
+      before { sign_in(member) }
 
       it 'redirect' do
         get edit_book_path(book)
