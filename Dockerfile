@@ -7,7 +7,6 @@ RUN mkdir /library
 WORKDIR /library
 COPY Gemfile /library/Gemfile
 COPY Gemfile.lock /library/Gemfile.lock
-COPY yarn.lock /library/yarn.lock
 COPY package.json /library/package.json
 RUN gem install rails bundler && bundle install
 RUN yarn install
