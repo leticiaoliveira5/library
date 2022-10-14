@@ -2,7 +2,6 @@
   <%= f.input :title %>
   <%= f.association :author, collection: Author.all.order(:name) %>
   <%= f.association :category, collection: Category.all.order(:name)  %>
-  <%= f.input :category %>
   <%= f.input :cover %>
   <%= f.button :submit %>
 <% end %>
