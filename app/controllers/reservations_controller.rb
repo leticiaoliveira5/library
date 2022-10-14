@@ -26,12 +26,24 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = reservation_scope.find(params[:id])
+
+  def update
+    @reservation = reservation_scope.find(params[:id])
+    @reservation.update(reservation_params_update)
+    return unless @reservation.save
+
+    @reservation.active!
+    redirect_to @reservation, notice: t('.success')
   end
 
   private
 
   def reservation_params
     params.require(:reservation).permit(:book_id, :user_id, :devolution)
+  end
+
+  def reservation_params_update
+    params.require(:reservation).permit(:devolution, :status)
   end
 
   # Se o usuário for admin, pode buscar por todas as reservas, mas se for membro,
