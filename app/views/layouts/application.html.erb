@@ -53,6 +53,9 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
+
+    <section class="py-5 text-center container">
+      <%= yield %>
+    </section>
   </body>
 </html>
