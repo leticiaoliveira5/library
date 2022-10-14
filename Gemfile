@@ -20,11 +20,19 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Simple Form
+gem 'simple_form', '5.1.0'
+
 # Instalação Bootstrap sem Node
 gem 'bootstrap'
 gem 'importmap-rails', '~> 1.1'
 gem 'sassc-rails', '~> 2.1'
 gem 'sprockets', '~> 4.1'
+
+# Paginação
+gem 'kaminari', '~> 1.2'
+# Busca
+gem 'ransack', '~> 3.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
