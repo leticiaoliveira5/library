@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'faker'
+
 # Cria usuário admin
 User.create!(email: 'admin@app.net', password: '123456', role: 0, name: 'Admin')
 
@@ -13,13 +15,16 @@ User.create!(email: 'admin@app.net', password: '123456', role: 0, name: 'Admin')
 User.create!(email: 'maria@gmail.web', password: '654321', role: 1, name: 'Maria')
 
 # Cria categorias
-Category.create(name: 'Mistério')
-Category.create(name: 'Não Ficção')
-Category.create(name: 'Didático')
-Category.create(name: 'Poesia')
+10.times do
+  Category.create(title: Faker::Book.unique.genre)
+end
 
 # Cria autores
-Author.create(name: 'Clarice Lispector')
-Author.create(name: 'Stephen King')
-Author.create(name: 'Charles Dickinson')
-Author.create(name: 'Machado de Assis')
+10.times do
+  Author.create(name: Faker::Book.unique.author)
+end
+
+# Cria livros
+24.times do 
+  Book.create(title: Faker::Book.title, author: Author.all.sample, category: Category.all.sample)
+end
