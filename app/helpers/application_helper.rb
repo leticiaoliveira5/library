@@ -1,7 +1,7 @@
 module ApplicationHelper
   def book_cover(book)
     cover = book.cover.attached? ? book.cover : 'no-cover.jpg'
-    image_tag(cover, width: '100%')
+    link_to image_tag(cover, width: '100%'), book
   end
 
   def book_admin_links(book)

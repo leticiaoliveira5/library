@@ -8,4 +8,8 @@ class Book < ApplicationRecord
   has_one_attached :cover
 
   validates :title, presence: true
+
+  def reserved?
+    reservations.active.any?
+  end
 end
