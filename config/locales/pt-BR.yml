@@ -6,6 +6,10 @@ pt-BR:
         author: Autor
         category: Categoria
       reservation:
+        book: Livro
+        devolution: Data da devolução
+        user: Usuário
+        created_at: Data da reserva
         devolution: Data da devolução
     errors:
       messages:
@@ -20,6 +24,8 @@ pt-BR:
   errors:
     format: "%{attribute} %{message}"
     messages:
+      not_member: é admin
+      longer_than_two_weeks: deve ser no máximo duas semanas a partir do momento da reserva
       accepted: deve ser aceito
       blank: não pode ficar em branco
       confirmation: não é igual a %{attribute}
