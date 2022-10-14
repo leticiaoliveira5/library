@@ -62,7 +62,7 @@ RSpec.describe 'Books', type: :request do
       get book_path(book)
 
       expect(response).to be_successful
-      # expect(response.body).to include(book.title)
+      expect(response.body).to include(book.title)
     end
   end
 end
