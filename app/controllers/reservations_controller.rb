@@ -13,6 +13,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = reservation_scope.new
+    @book = Book.find(params[:book_id])
   end
 
   def create
@@ -26,6 +27,8 @@ class ReservationsController < ApplicationController
 
   def edit
     @reservation = reservation_scope.find(params[:id])
+    @book = @reservation.book
+  end
 
   def update
     @reservation = reservation_scope.find(params[:id])
