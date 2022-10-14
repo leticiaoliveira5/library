@@ -27,6 +27,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    redirect_to @book, notice: t('.success') if @book.save
+  end
+
   private
 
   def book_params
