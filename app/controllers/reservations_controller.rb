@@ -33,10 +33,7 @@ class ReservationsController < ApplicationController
   def update
     @reservation = reservation_scope.find(params[:id])
     @reservation.update(reservation_params_update)
-    return unless @reservation.save
-
-    @reservation.active!
-    redirect_to @reservation, notice: t('.success')
+    redirect_to @reservation, notice: t('.success') if @reservation.save
   end
 
   private
