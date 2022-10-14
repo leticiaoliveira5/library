@@ -7,7 +7,7 @@ RSpec.describe 'Books', type: :request do
   let(:member) { create(:user, :member) }
   let!(:book) { Book.create(title: 'Era Uma Vez', author: author, category: category) }
 
-  before { sign_in(user) }
+  before { sign_in(admin) }
 
   describe 'GET /index' do
     it 'request list of all books' do
