@@ -13,7 +13,7 @@ RSpec.feature 'Admin creates reservation', type: :feature do
 
     expect(current_path).to eq new_reservation_path
 
-    fill_in :reservation_devolution, with: 10.days.from_now.strftime("%d%m%Y").to_s
+    fill_in :reservation_devolution, with: 10.days.from_now.strftime('%d%m%Y').to_s
     within('#reservation_user_id') { select member.name }
     click_on :commit
 
