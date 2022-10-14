@@ -9,10 +9,10 @@ module ApplicationHelper
   end
 
   def book_member_links(book)
-    if book.reservations.active.empty?
+    if book.active_reservations.blank?
       link_to 'Reservar', new_reservation_path, class: 'btn btn-primary'
     else
-      content_tag(:div, 'O livro não está disponível no momento', class: 'danger')
+      content_tag(:div, 'O livro não está disponível no momento', class: 'hint')
     end
   end
 end
