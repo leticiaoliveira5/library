@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
 ruby '3.1.2'
 
@@ -19,10 +19,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "importmap-rails", "~> 1.1"
-gem "sprockets", "~> 4.1"
-gem "sassc-rails", "~> 2.1"
+
+# Instalação Bootstrap sem Node
 gem 'bootstrap'
+gem 'importmap-rails', '~> 1.1'
+gem 'sassc-rails', '~> 2.1'
+gem 'sprockets', '~> 4.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
