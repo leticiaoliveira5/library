@@ -1,12 +1,15 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= book_cover(@book) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <%= book_cover(@book) %>
+    </div>
+    <div class="col-md-8">
+      <p>Título: <%= @book.title %></p>
+      <p>Autor: <%= @book.author.name %></p>
+      <p>Categoria: <%= @book.category.name %></p>
+
+      <%= book_admin_links(@book) if current_user.admin_role? %>
+      <%= book_member_links(@book) if current_user.member_role? %>
+    </div>
   </div>
-  <div class="col-md-4">
-    <p>Título: <%= @book.title %></p>
-    <p>Autor: <%= @book.author.name %></p>
-    <p>Categoria: <%= @book.category.name %></p>
-  </div>
-  <%= book_admin_links(@book) if current_user.admin_role? %>
-  <%= book_member_links(@book) if current_user.member_role? %>
 </div>
