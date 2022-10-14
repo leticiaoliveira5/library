@@ -86,6 +86,8 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    cssbundling-rails (1.1.1)
+      railties (>= 6.0.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -272,6 +274,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara
+  cssbundling-rails (~> 1.1)
   devise (~> 4.8, >= 4.8.1)
   factory_bot_rails (= 6.2.0)
   faker
@@ -284,6 +287,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sass-rails (>= 6)
+  sassc-rails (~> 2.1)
   shoulda-matchers (~> 5.0)
   simplecov (~> 0.13.0)
   spring
