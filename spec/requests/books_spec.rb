@@ -13,7 +13,7 @@ RSpec.describe 'Books', type: :request do
       get books_path
 
       expect(response).to be_successful
-      # expect(response.body).to include('Era Uma Vez')
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -54,7 +54,6 @@ RSpec.describe 'Books', type: :request do
 
       expect(response).to redirect_to(Book.last)
       expect(flash[:notice]).to be_present
-      # expect(response.body).to include 'Livro criado com sucesso'
     end
   end
 
