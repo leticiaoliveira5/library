@@ -1,1 +1,9 @@
-<%= @books %>
+<% @books.each do |book| %>
+  <div class="col-md">
+    <%= book_cover(book) %>
+    <p>Título: <%= book.title %></p>
+    <p>Autor: <%= book.author.name %></p>
+    <p>Categoria: <%= book.category.name %></p>
+  </div>
+<% end %>
+<%= paginate @books %>
