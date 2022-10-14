@@ -16,7 +16,7 @@ RSpec.feature 'Navbar Links', type: :feature do
   scenario 'user is member' do
     login_as member, scope: :user
     visit root_path
-    
+
     expect(page).not_to have_link(href: new_book_path)
     expect(page).not_to have_link(href: new_user_path)
     expect(page).not_to have_link(href: new_reservation_path)
