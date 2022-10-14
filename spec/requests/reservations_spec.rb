@@ -31,7 +31,7 @@ RSpec.describe 'Reservations', type: :request do
 
   describe 'GET /new' do
     it 'show reservation form' do
-      get new_reservation_path
+      get new_reservation_path(book_id: create(:book).id)
 
       expect(response).to be_successful
     end

@@ -1,0 +1,19 @@
+<% return if @reservations.blank? %>
+<% @reservations.each_slice(4) do |reservations| %>
+  <div class="row">
+    <% reservations.each do |r| %>
+      <div class="col-md card" style="margin: 10px; max-width:250px;">
+        <%= link_to book_cover(r.book), reservation_path(r) %>
+        <div class="card-body">
+          <h5 class="card-title"><%= r.book.title %></h5>
+          <p class="card-text">
+            Usuário: <%= r.user.name %><br>
+            Devolução: <%= r.devolution %><br>
+            Status: <%= r.status %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @reservations %>

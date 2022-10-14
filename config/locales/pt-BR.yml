@@ -5,6 +5,8 @@ pt-BR:
         title: Título
         author: Autor
         category: Categoria
+      reservation:
+        devolution: Data da devolução
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'
@@ -68,6 +70,8 @@ pt-BR:
   reservations:
     create:
       success: Reserva criada com sucesso!
+    update:
+      success: Reserva atualizada com sucesso!
   users:
     create:
       success: Usuário criado com sucesso!
